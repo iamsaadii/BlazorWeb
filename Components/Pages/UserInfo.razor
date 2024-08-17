@@ -1,0 +1,50 @@
+﻿@page "/userInfo"
+@inject HttpClient Http
+<PageTitle>UserInfo</PageTitle>
+<h1> Hello from User Info</h1>
+@if (userInfo is null)
+{
+    <p>Loading....</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>UserId</th>
+                <th>UserName</th>
+                <th>UserEmail</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int a = 0; a < userInfo.Count; a++)
+            {
+                <tr>
+                    <td>
+                        @userInfo[a].Id
+                    </td>
+                    <td>
+                        @userInfo[a].Name
+                    </td>
+                    <td>
+                        @userInfo[a].Email
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    public List<UserInfoDTO>? userInfo;
+    protected override async Task OnInitializedAsync()
+    {
+        userInfo = await Http.GetFromJsonAsync<List<UserInfoDTO>>("api/home");
+        if (userInfo is null) return;
+        foreach (var user in userInfo)
+        {
+            Console.WriteLine($"ID: {user.Id}, Name: {user.Name}, Email: {user.Email}");
+        }
+    }
+
+}
+
