@@ -38,7 +38,16 @@ else
     public List<UserInfoDTO>? userInfo;
     protected override async Task OnInitializedAsync()
     {
-        userInfo = await Http.GetFromJsonAsync<List<UserInfoDTO>>("api/home");
+        userInfo = new List<UserInfoDTO>();
+        UserInfoDTO userInfoDTO1 = new UserInfoDTO() { Name = "Zain" };
+        UserInfoDTO userInfoDTO2 = new UserInfoDTO() { Name = "Umer" };
+        UserInfoDTO userInfoDTO3 = new UserInfoDTO() { Name = "Ali" };
+
+        userInfo.Add(userInfoDTO1);
+        userInfo.Add(userInfoDTO2);
+        userInfo.Add(userInfoDTO3);
+
+        // userInfo = await Http.GetFromJsonAsync<List<UserInfoDTO>>("api/home");
         if (userInfo is null) return;
         foreach (var user in userInfo)
         {
