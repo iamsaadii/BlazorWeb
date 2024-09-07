@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: '8.0.x'  # Ensure you're using the correct .NET version
+        dotnet-version: '8.0.2'  
 
     - name: Restore dependencies
       run: dotnet restore
@@ -27,7 +27,7 @@ jobs:
     - name: Deploy to Vercel
       uses: amondnet/vercel-action@v20
       with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-token: iljE4GrZ0oyeAwsliDFWluIN
+        vercel-org-id: QNmzlXRnAZo8t0Hdi7THHdiG
+        vercel-project-id: prj_x6L1KInRaSET08kdlFhTp8UyzsoI
         working-directory: ./publish/wwwroot
